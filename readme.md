@@ -1,7 +1,3 @@
-Here's your improved and polished **README.md**, including clear steps for integrating **MudBlazor**:
-
----
-
 # 🚀 Photino.Blazor Desktop App Template (.NET 9)
 
 This repository provides a straightforward template and setup guide for creating desktop applications using **Photino.Blazor** with **.NET 9**, including support for the **MudBlazor** UI framework.
@@ -45,7 +41,7 @@ dotnet add package Photino.Blazor
 
 Create a new file at:
 
-```
+```bash
 wwwroot/index.html
 ```
 

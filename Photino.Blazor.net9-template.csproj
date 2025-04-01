@@ -9,6 +9,16 @@
     <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- Publish as a self-contained single file -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <!-- Set the target runtime (e.g., win-x64, linux-x64, osx-x64) -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <!-- Optionally, trim unused code for a smaller executable -->
+    <!-- <PublishTrimmed>true</PublishTrimmed> -->
+  </PropertyGroup>
+
 	<ItemGroup>
 		<Content Update="wwwroot\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

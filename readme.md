@@ -229,6 +229,10 @@ Launch your application using:
 
 ```bash
 dotnet run
+
+dotnet publish -c Release
+
+dotnet publish -c Release -p:PublishReadyToRun=true
 ```
 
 Your Photino.Blazor desktop app should now be up and running!

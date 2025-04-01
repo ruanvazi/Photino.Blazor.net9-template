@@ -68,3 +68,5 @@ Remove the following from App.razor
 </Project>
 ```
 
+## Step Six - Update Program.cs
+

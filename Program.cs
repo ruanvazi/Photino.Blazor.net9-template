@@ -1,28 +1,34 @@
+using Photino.Blazor;
 using Photino.Blazor.net9_template.Components;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+namespace Photino.Blazor.net9_template
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    class Program
+    {
+        [STAThread]
+        static void Main(string[] args)
+        {
+            var appBuilder = PhotinoBlazorAppBuilder.CreateDefault(args);
+
+            appBuilder.Services
+                .AddLogging();
+
+            // register root component and selector
+            appBuilder.RootComponents.Add<App>("app");
+
+            var app = appBuilder.Build();
+
+            // customize window
+            app.MainWindow
+                .SetTitle("Photino Blazor Sample");
+
+            AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
+            {
+                app.MainWindow.ShowMessage("Fatal exception", error.ExceptionObject.ToString());
+            };
+
+            app.Run();
+
+        }
+    }
 }
-
-app.UseHttpsRedirection();
-
-
-app.UseAntiforgery();
-
-app.MapStaticAssets();
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
-
-app.Run();

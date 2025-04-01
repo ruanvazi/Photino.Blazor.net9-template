@@ -1,33 +1,37 @@
-# Photino.Blazor Desktop App Template (.NET 9)
+Here's your improved and polished **README.md**, including clear steps for integrating **MudBlazor**:
 
-A simple, step-by-step guide to setting up a desktop application using **Photino.Blazor** and **Blazor** with **.NET 9**.
+---
+
+# 🚀 Photino.Blazor Desktop App Template (.NET 9)
+
+This repository provides a straightforward template and setup guide for creating desktop applications using **Photino.Blazor** with **.NET 9**, including support for the **MudBlazor** UI framework.
 
 ---
 
 ## 📌 Prerequisites
 
-Ensure you have installed:
+Make sure you have:
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 - [Visual Studio Code](https://code.visualstudio.com/) or [Visual Studio](https://visualstudio.microsoft.com/)
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Initial Project Setup
 
-Follow these simple steps to set up your **Photino.Blazor** desktop application:
+Follow these steps to initialize your **Photino.Blazor** project:
 
-### Step 1: Initialize a Blazor Project
+### **Step 1: Create a Blazor Project**
 
-Create a new Blazor Web project:
+Open a terminal and run:
 
 ```bash
 dotnet new blazor
 ```
 
-### Step 2: Install Photino.Blazor Package
+### **Step 2: Install Photino.Blazor**
 
-Add the **Photino.Blazor** NuGet package:
+Add the Photino.Blazor NuGet package:
 
 ```bash
 dotnet add package Photino.Blazor
@@ -35,17 +39,17 @@ dotnet add package Photino.Blazor
 
 ---
 
-## ⚙️ Project Configuration
+## 📂 Project Configuration
 
-### Step 3: Add Minimal `index.html`
+### **Step 3: Add Minimal `index.html`**
 
-Create the following file:
+Create a new file at:
 
 ```
 wwwroot/index.html
 ```
 
-Include this minimal HTML content:
+Add the following content:
 
 ```html
 <!DOCTYPE html>
@@ -59,17 +63,17 @@ Include this minimal HTML content:
 </html>
 ```
 
-### Step 4: Update `App.razor`
+### **Step 4: Update `App.razor`**
 
-Remove the following script reference from your `App.razor` file (if present):
+Remove this line from `App.razor` if present:
 
 ```html
 <script src="_framework/blazor.web.js"></script>
 ```
 
-### Step 5: Modify `.csproj` File
+### **Step 5: Update `.csproj` File**
 
-Replace your project file (`.csproj`) contents with the following:
+Update your project file (`.csproj`) as follows:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.razor">
@@ -98,9 +102,9 @@ Replace your project file (`.csproj`) contents with the following:
 
 ## 🛠️ Application Setup
 
-### Step 6: Update `Program.cs`
+### **Step 6: Update `Program.cs`**
 
-Replace the contents of `Program.cs` with the following:
+Replace your `Program.cs` file contents with:
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -116,12 +120,10 @@ namespace Photino.Blazor.net9_template
 
             appBuilder.Services.AddLogging();
 
-            // Register root component and selector
             appBuilder.RootComponents.Add<App>("app");
 
             var app = appBuilder.Build();
 
-            // Customize window title
             app.MainWindow.SetTitle("Photino Blazor Sample");
 
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
@@ -139,20 +141,20 @@ namespace Photino.Blazor.net9_template
 
 ## 🧹 Cleanup & Adjustments
 
-### Step 7: Remove `@rendermode` from Pages
+### **Step 7: Remove Server-side Directives**
 
-- Remove the `@rendermode InteractiveServer` directive from `Counter.razor`.
-- Remove the `@attribute [StreamRendering]` directive from `Weather.razor`.
+- Remove `@rendermode InteractiveServer` from `Counter.razor`.
+- Remove `@attribute [StreamRendering]` from `Weather.razor`.
 
-### Step 8: Project Type Adjustment and Cleanup
+### **Step 8: Final Project Adjustments**
 
-- Modify the project SDK in `.csproj` to use Razor SDK:
+- Ensure `.csproj` uses Razor SDK:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.razor">
 ```
 
-- Ensure `Program.cs` uses:
+- Add the following using directive in `Program.cs`:
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -161,27 +163,88 @@ using Microsoft.Extensions.DependencyInjection;
 - Delete unnecessary files:
 
   - `./Components/Pages/Error.razor`
-  - Remove `<ImportMap />` directive from `./Components/App.razor`
+  - Remove `<ImportMap />` from `./Components/App.razor`
 
 ---
 
-## 🎉 Launch your Application!
+## 🎨 MudBlazor Integration (Optional)
 
-Build and run your project using the following command:
+To enhance your app with the **MudBlazor UI Framework**, follow these steps:
+
+### **Install MudBlazor**
+
+```bash
+dotnet add package MudBlazor
+```
+
+### **Add Imports**
+
+Add the following line to your `./Components/_Imports.razor`:
+
+```razor
+@using MudBlazor
+```
+
+### **Include Styles and Scripts**
+
+In your HTML `<head>` section (`./Components/App.razor`), add:
+
+```html
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+```
+
+At the end of the HTML `<body>` section, add the MudBlazor JS script:
+
+```html
+<script src="_content/MudBlazor/MudBlazor.min.js"></script>
+```
+
+### **Register MudBlazor Services**
+
+Update `Program.cs` by adding:
+
+```csharp
+using MudBlazor.Services;
+
+// Add MudBlazor services
+appBuilder.Services.AddMudServices();
+```
+
+### **Update MainLayout**
+
+In your `MainLayout.razor`, include these providers:
+
+```razor
+@* Required Providers *@
+<MudThemeProvider />
+<MudPopoverProvider />
+
+@* Optional Providers *@
+<MudDialogProvider />
+<MudSnackbarProvider />
+```
+
+---
+
+## ▶️ Running Your Application
+
+Launch your application using:
 
 ```bash
 dotnet run
 ```
 
-Enjoy building your Photino.Blazor Desktop App!
+Your Photino.Blazor desktop app should now be up and running!
 
 ---
 
-## 📖 Resources & Documentation
+## 📚 Helpful Resources
 
-- [Photino.Blazor GitHub Repository](https://github.com/tryphotino/photino.Blazor)
-- [.NET Blazor Official Documentation](https://learn.microsoft.com/en-us/aspnet/core/blazor)
-- [.NET 9.0 Official Site](https://dotnet.microsoft.com/)
+- [Photino.Blazor GitHub](https://github.com/tryphotino/photino.Blazor)
+- [MudBlazor Documentation](https://mudblazor.com/)
+- [Blazor Documentation](https://learn.microsoft.com/en-us/aspnet/core/blazor)
+- [.NET 9 Official Site](https://dotnet.microsoft.com/)
 
 ---
 

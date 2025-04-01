@@ -1,6 +1,7 @@
 using Photino.Blazor;
 using Photino.Blazor.net9_template.Components;
 using Microsoft.Extensions.DependencyInjection;
+using MudBlazor.Services;
 
 namespace Photino.Blazor.net9_template
 {
@@ -12,7 +13,8 @@ namespace Photino.Blazor.net9_template
             var appBuilder = PhotinoBlazorAppBuilder.CreateDefault(args);
 
             appBuilder.Services
-                .AddLogging();
+                .AddLogging()
+                .AddMudServices();
 
             // register root component and selector
             appBuilder.RootComponents.Add<App>("app");

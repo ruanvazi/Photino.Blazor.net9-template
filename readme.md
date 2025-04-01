@@ -34,3 +34,11 @@ Insert the contents
 </body>
 </html>
 ```
+
+## Step Four - Update App.razor
+
+Remove the following from App.razor
+
+```html
+    <script src="_framework/blazor.web.js"></script>
+```

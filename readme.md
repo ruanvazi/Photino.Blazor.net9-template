@@ -12,3 +12,25 @@ dotnet new blazor
 dotnet add package Photino.Blazor
 ```
 
+## Step Three - Add Minimal index.html
+
+Add the file
+
+```bash
+wwwroot/index.html
+```
+
+Insert the contents
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <app>Loading...</app>
+    <script src="_framework/blazor.webview.js"></script>
+</body>
+</html>
+```

@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Photino.Blazor.net9-template", "Photino.Blazor.net9-template.csproj", "{0F61ACC2-6766-5031-533E-231962E35972}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F61ACC2-6766-5031-533E-231962E35972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F61ACC2-6766-5031-533E-231962E35972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F61ACC2-6766-5031-533E-231962E35972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F61ACC2-6766-5031-533E-231962E35972}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A02EB18-09F3-4FD8-8DEA-E2BE95D83926}
+	EndGlobalSection
+EndGlobal

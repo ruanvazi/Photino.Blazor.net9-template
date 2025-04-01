@@ -103,3 +103,9 @@ namespace Photino.Blazor.net9_template
     }
 }
 ```
+
+## Step Seven - Remove @rendermode From Pages
+
+Remove @rendermode InteractiveServer from Counter.razor
+
+@attribute [StreamRendering] from Weather.razor

@@ -109,3 +109,21 @@ namespace Photino.Blazor.net9_template
 Remove @rendermode InteractiveServer from Counter.razor
 
 @attribute [StreamRendering] from Weather.razor
+
+## Step Eight - Change Project Type to Razor
+
+Modify csproj to target "Microsoft.NET.Sdk.razor"
+
+```text
+<Project Sdk="Microsoft.NET.Sdk.razor">
+```
+
+Modify Program.cs to use "Microsoft.Extensions.DependencyInjection"
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+```
+
+Delete ./Components/Pages/Error.razor
+
+Delete ```<ImportMap />``` from ./Components/App.razor

@@ -1,5 +1,6 @@
 using Photino.Blazor;
 using Photino.Blazor.net9_template.Components;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Photino.Blazor.net9_template
 {

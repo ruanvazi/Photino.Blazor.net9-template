@@ -1,32 +1,56 @@
-# Template Photino.Blazor dotnet9.0 Desktop App
+# Photino.Blazor Desktop App Template (.NET 9)
 
-## Step one - Init Project
+A simple, step-by-step guide to setting up a desktop application using **Photino.Blazor** and **Blazor** with **.NET 9**.
+
+---
+
+## 📌 Prerequisites
+
+Ensure you have installed:
+
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [Visual Studio Code](https://code.visualstudio.com/) or [Visual Studio](https://visualstudio.microsoft.com/)
+
+---
+
+## 🚀 Getting Started
+
+Follow these simple steps to set up your **Photino.Blazor** desktop application:
+
+### Step 1: Initialize a Blazor Project
+
+Create a new Blazor Web project:
 
 ```bash
 dotnet new blazor
 ```
 
-## Step Two - Install Photino.Blazor
+### Step 2: Install Photino.Blazor Package
+
+Add the **Photino.Blazor** NuGet package:
 
 ```bash
 dotnet add package Photino.Blazor
 ```
 
-## Step Three - Add Minimal index.html
+---
 
-Add the file
+## ⚙️ Project Configuration
 
-```bash
+### Step 3: Add Minimal `index.html`
+
+Create the following file:
+
+```
 wwwroot/index.html
 ```
 
-Insert the contents
+Include this minimal HTML content:
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-
 </head>
 <body>
     <app>Loading...</app>
@@ -35,18 +59,20 @@ Insert the contents
 </html>
 ```
 
-## Step Four - Update App.razor
+### Step 4: Update `App.razor`
 
-Remove the following from App.razor
+Remove the following script reference from your `App.razor` file (if present):
 
 ```html
-    <script src="_framework/blazor.web.js"></script>
+<script src="_framework/blazor.web.js"></script>
 ```
 
-## Step Five - Update Project csproj file
+### Step 5: Modify `.csproj` File
 
-```txt
-<Project Sdk="Microsoft.NET.Sdk.Web">
+Replace your project file (`.csproj`) contents with the following:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.razor">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -68,9 +94,17 @@ Remove the following from App.razor
 </Project>
 ```
 
-## Step Six - Update Program.cs
+---
+
+## 🛠️ Application Setup
+
+### Step 6: Update `Program.cs`
+
+Replace the contents of `Program.cs` with the following:
 
 ```csharp
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Photino.Blazor.net9_template
 {
     class Program
@@ -80,50 +114,75 @@ namespace Photino.Blazor.net9_template
         {
             var appBuilder = PhotinoBlazorAppBuilder.CreateDefault(args);
 
-            appBuilder.Services
-                .AddLogging();
+            appBuilder.Services.AddLogging();
 
-            // register root component and selector
+            // Register root component and selector
             appBuilder.RootComponents.Add<App>("app");
 
             var app = appBuilder.Build();
 
-            // customize window
-            app.MainWindow
-                .SetTitle("Photino Blazor Sample");
+            // Customize window title
+            app.MainWindow.SetTitle("Photino Blazor Sample");
 
             AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
             {
-                app.MainWindow.ShowMessage("Fatal exception", error.ExceptionObject.ToString());
+                app.MainWindow.ShowMessage("Fatal Exception", error.ExceptionObject.ToString());
             };
 
             app.Run();
-
         }
     }
 }
 ```
 
-## Step Seven - Remove @rendermode From Pages
+---
 
-Remove @rendermode InteractiveServer from Counter.razor
+## 🧹 Cleanup & Adjustments
 
-@attribute [StreamRendering] from Weather.razor
+### Step 7: Remove `@rendermode` from Pages
 
-## Step Eight - Change Project Type to Razor
+- Remove the `@rendermode InteractiveServer` directive from `Counter.razor`.
+- Remove the `@attribute [StreamRendering]` directive from `Weather.razor`.
 
-Modify csproj to target "Microsoft.NET.Sdk.razor"
+### Step 8: Project Type Adjustment and Cleanup
 
-```text
+- Modify the project SDK in `.csproj` to use Razor SDK:
+
+```xml
 <Project Sdk="Microsoft.NET.Sdk.razor">
 ```
 
-Modify Program.cs to use "Microsoft.Extensions.DependencyInjection"
+- Ensure `Program.cs` uses:
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-Delete ./Components/Pages/Error.razor
+- Delete unnecessary files:
 
-Delete ```<ImportMap />``` from ./Components/App.razor
+  - `./Components/Pages/Error.razor`
+  - Remove `<ImportMap />` directive from `./Components/App.razor`
+
+---
+
+## 🎉 Launch your Application!
+
+Build and run your project using the following command:
+
+```bash
+dotnet run
+```
+
+Enjoy building your Photino.Blazor Desktop App!
+
+---
+
+## 📖 Resources & Documentation
+
+- [Photino.Blazor GitHub Repository](https://github.com/tryphotino/photino.Blazor)
+- [.NET Blazor Official Documentation](https://learn.microsoft.com/en-us/aspnet/core/blazor)
+- [.NET 9.0 Official Site](https://dotnet.microsoft.com/)
+
+---
+
+Happy coding! 🚀✨
